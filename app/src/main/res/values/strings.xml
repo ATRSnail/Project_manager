@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Project_manager</string>
+    <string name="internet_error">网络异常,请检查网络设置</string>
+    <string name="load_error">加载失败</string>
+    <string name="retry_after">请稍后重试</string>
+    <string name="retry_refresh_news">点我一下 重新加载</string>
+    <string name="no_more">没有更多了</string>
+
+    <string name="pro_name">项目名称:</string>
+    <string name="pro_cate">任务分类:</string>
+    <string name="pro_link">环&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;节:</string>
+    <string name="pro_node">节&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;点:</string>
+    <string name="pro_unit">施工单位:</string>
+    <string name="pro_executor">执&#160;&#160;行&#160;&#160;人:</string>
+    <string name="pro_opinion">审核意见:</string>
+    <string name="pro_demand">要&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;求:</string>
+</resources>

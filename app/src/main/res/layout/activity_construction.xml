@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_construction"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:context=".mvp.ui.activity.ConstructionActivity">
+
+    <include layout="@layout/layout_main_header"/>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/white_circle_5"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        style="@style/text_333_16"
+                        android:layout_centerVertical="true"
+                        android:text="@string/pro_name" />
+
+                    <TextView
+                        style="@style/text_999_16"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="项目A" />
+                </RelativeLayout>
+
+                <View style="@style/view_A8A8A8_border" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        style="@style/text_333_16"
+                        android:layout_centerVertical="true"
+                        android:text="@string/pro_cate" />
+
+                    <TextView
+                        style="@style/text_999_16"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="项目A" />
+                </RelativeLayout>
+
+                <View style="@style/view_A8A8A8_border" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        style="@style/text_333_16"
+                        android:layout_centerVertical="true"
+                        android:text="@string/pro_link" />
+
+                    <TextView
+                        style="@style/text_999_16"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="项目A" />
+                </RelativeLayout>
+
+                <View style="@style/view_A8A8A8_border" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        style="@style/text_333_16"
+                        android:layout_centerVertical="true"
+                        android:text="@string/pro_node" />
+
+                    <TextView
+                        style="@style/text_999_16"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="项目A" />
+                </RelativeLayout>
+
+                <View style="@style/view_A8A8A8_border" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        style="@style/text_333_16"
+                        android:layout_centerVertical="true"
+                        android:text="@string/pro_unit" />
+
+                    <TextView
+                        style="@style/text_999_16"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="项目A" />
+                </RelativeLayout>
+
+                <View style="@style/view_A8A8A8_border" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        style="@style/text_333_16"
+                        android:layout_centerVertical="true"
+                        android:text="@string/pro_executor" />
+
+                    <TextView
+                        style="@style/text_999_16"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="项目A" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        style="@style/text_333_16"
+                        android:layout_centerVertical="true"
+                        android:text="@string/pro_demand" />
+
+                    <TextView
+                        style="@style/text_999_16"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="项目A" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
+            </LinearLayout>
+
+            <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
+                android:id="@+id/videoplayer"
+                android:layout_marginTop="10.0dip"
+                android:layout_width="match_parent"
+                android:layout_height="210dp" />
+
+            <Button
+                android:id="@+id/btn_take_photo"
+                android:layout_width="fill_parent"
+                android:layout_height="40.0dip"
+                android:layout_marginLeft="15.0dip"
+                android:layout_marginRight="15.0dip"
+                android:layout_marginTop="50.0dip"
+                android:background="@drawable/white_circle_5"
+                android:text="拍照"
+                android:textColor="@color/color_039bfb"
+                android:textSize="16.0sp" />
+
+            <Button
+                android:id="@+id/btn_video"
+                android:layout_width="fill_parent"
+                android:layout_height="40.0dip"
+                android:layout_marginLeft="15.0dip"
+                android:layout_marginRight="15.0dip"
+                android:layout_marginTop="15.0dip"
+                android:background="@drawable/grey_circle_5"
+                android:text="视频"
+                android:textColor="@color/color_039bfb"
+                android:textSize="16.0sp" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="40.0dip"
+                android:layout_marginLeft="15.0dip"
+                android:layout_marginRight="15.0dip"
+                android:layout_marginTop="15.0dip"
+                android:background="@drawable/blue_circle_5"
+                android:text="上传"
+                android:textColor="#ffffffff"
+                android:textSize="16.0sp" />
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

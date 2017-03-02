@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <include layout="@layout/layout_main_header" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:scaleType="fitXY"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:src="@mipmap/page_login_img_logo" />
+
+        <RelativeLayout
+            android:id="@+id/rl_1"
+            android:layout_width="fill_parent"
+            android:layout_height="100.0dip"
+            android:layout_marginLeft="15.0dip"
+            android:layout_marginRight="15.0dip"
+            android:background="@drawable/white_circle_5"
+            android:layout_marginTop="250.0dip">
+
+            <RelativeLayout
+                android:id="@+id/layoutPhone"
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip">
+
+
+                <EditText
+                    android:id="@+id/phone"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@null"
+                    android:hint="请输入您的账号"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:paddingLeft="15.0dip"
+                    android:singleLine="true"
+                    android:textColor="#ff111111"
+                    android:textColorHint="#ffaaaaaa"
+                    android:textSize="16.0sp" />
+
+                <ImageView
+                    android:id="@+id/imgCancel"
+                    android:layout_width="16.0dip"
+                    android:layout_height="16.0dip"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12.0dip"
+                    android:background="@mipmap/cancel_phone"
+                    android:visibility="invisible" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:layout_below="@+id/layoutPhone">
+
+                <View
+                    style="@style/view_A8A8A8_border" />
+
+                <EditText
+                    android:id="@+id/code"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="@null"
+                    android:hint="请输入您的密码"
+                    android:paddingLeft="15.0dip"
+                    android:singleLine="true"
+                    android:inputType="textPassword"
+                    android:textColor="@color/color_333333"
+                    android:textColorHint="@color/color_999999"
+                    android:textSize="16.0sp" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnSure"
+            android:layout_width="fill_parent"
+            android:layout_height="40.0dip"
+            android:layout_below="@+id/rl_1"
+            android:layout_marginLeft="15.0dip"
+            android:layout_marginRight="15.0dip"
+            android:layout_marginTop="45.0dip"
+            android:background="@drawable/blue_circle_5"
+            android:text="登录"
+            android:textColor="#ffffffff"
+            android:textSize="18.0sp" />
+    </RelativeLayout>
+</RelativeLayout>

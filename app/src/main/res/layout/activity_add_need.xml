@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_need"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.project.project_manager.mvp.ui.activity.AddNeedActivity">
+
+    <include layout="@layout/layout_main_header" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                style="@style/linear_magin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/grey_circle_5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="项目名称 : "
+                    android:textColor="@color/color_333333"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@null"
+                    android:textColor="@color/color_333333"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/linear_magin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/grey_circle_5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="任务分类 : "
+                    android:textColor="@color/color_333333"
+                    android:textSize="16sp" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="性别"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioMale"
+                        style="@style/text_999_16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:text="施工方" />
+
+                    <RadioButton
+                        style="@style/text_999_16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="设计方" />
+
+                    <RadioButton
+                        style="@style/text_999_16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="监理方" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/linear_magin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/grey_circle_5"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/text_333_16"
+                    android:layout_gravity="center_vertical"
+                    android:text="环节 : " />
+
+                <TextView
+                    style="@style/text_333_16"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:drawableRight="@mipmap/ic_setting_arrow"
+                    android:text="设备与材料" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/linear_magin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/grey_circle_5"
+                android:paddingTop="17dp"
+                android:paddingBottom="17dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="节点 : "
+                    android:textColor="@color/color_333333"
+                    android:textSize="16sp" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-5dp"
+                    android:contentDescription="节点">
+
+                    <RadioButton
+                        style="@style/text_999_16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="施工方施工方施工方施工方施工方施工方施工方施工方施工方施工方施工方" />
+
+                    <RadioButton
+                        style="@style/text_999_16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="设计方" />
+
+                    <RadioButton
+                        style="@style/text_999_16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="监理方" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/linear_magin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/grey_circle_5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="要求 : "
+                    android:textColor="@color/color_333333"
+                    android:textSize="16sp" />
+
+                <TextView
+                    style="@style/text_333_16_draw_right"
+                    android:text="照片+视频" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/grey_circle_5"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="施工单位 : "
+                        android:textColor="@color/color_333333"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        style="@style/text_333_16_draw_right"
+                        android:text="照片+视频" />
+                </LinearLayout>
+
+                <View style="@style/view_A8A8A8_border" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="执行人 : "
+                        android:textColor="@color/color_333333"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        style="@style/text_333_16_draw_right"
+                        android:text="照片+视频" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/grey_circle_5"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="设计单位 : "
+                        android:textColor="@color/color_333333"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        style="@style/text_333_16_draw_right"
+                        android:text="照片+视频" />
+                </LinearLayout>
+
+                <View style="@style/view_A8A8A8_border" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="执行人 : "
+                        android:textColor="@color/color_333333"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        style="@style/text_333_16_draw_right"
+                        android:text="照片+视频" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/grey_circle_5"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="监理单位 : "
+                        android:textColor="@color/color_333333"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        style="@style/text_333_16_draw_right"
+                        android:text="照片+视频" />
+                </LinearLayout>
+
+                <View style="@style/view_A8A8A8_border" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="执行人 : "
+                        android:textColor="@color/color_333333"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        style="@style/text_333_16_draw_right"
+                        android:text="照片+视频" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSure"
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:layout_below="@+id/rl_1"
+                android:layout_marginBottom="35dp"
+                android:layout_marginLeft="15.0dip"
+                android:layout_marginRight="15.0dip"
+                android:layout_marginTop="35.0dip"
+                android:background="@drawable/blue_circle_5"
+                android:text="提交"
+                android:textColor="#ffffffff"
+                android:textSize="16.0sp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
