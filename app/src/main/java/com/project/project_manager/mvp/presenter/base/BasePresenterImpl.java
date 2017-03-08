@@ -28,7 +28,7 @@ public class BasePresenterImpl<T extends BaseView, E> implements BasePresenter, 
     }
 
     @Override
-    public void onDestroy() {
+    public void onDestory() {
         MyUtils.cancelSubscription(mSubscription);
     }
 

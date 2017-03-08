@@ -57,6 +57,7 @@
             android:theme="@style/ThemeFullscreen" />
         <activity android:name=".mvp.ui.activity.MineActivity" />
         <activity android:name=".mvp.ui.activity.RetPasswordActivity" />
+        <activity android:name=".mvp.ui.activity.MainTabActivity"/>
     </application>
 
 </manifest>

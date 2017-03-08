@@ -22,11 +22,11 @@ public class MineActivity extends BaseActivity {
 
     @Override
     public void initViews() {
-      setCustomTitle("我的");
+        setCustomTitle("我的");
     }
 
     @OnClick(R.id.tv_password_manage)
     public void onClick(View view){
-       startActivity(new Intent(MineActivity.this,RetPasswordActivity.class));
+        startActivity(new Intent(MineActivity.this,RetPasswordActivity.class));
     }
 }

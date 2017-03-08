@@ -8,19 +8,19 @@ package com.project.project_manager.mvp.entity;
 
 public class LoginBean {
 
-
     /**
-     * phoneNo : 15101659241
-     * niceName : wo
-     * id : xaQKecQ1p9ntyGIH39IRPsFoWpx4sfvT
-     * utime : 1482742620000
-     * systemeType : 2
-     * imei : 1234567
+     * phoneNo : 13521884420
+     * niceName : 陈金诚
+     * id : sDmpexZH4c0rkISQldnckA9jJxTzOdbr
+     * utime : 1488349320000
+     * systemeType : 1
+     * imei : 123456
      * state : 1
-     * userName : y1234567
-     * userEmail : 77826018@qq.com
-     * ctime : 1482739541000
-     * phoneModel : 1234567
+     * userEmail : 123@qq.com
+     * ctime : 1488349276000
+     * phoneModel : 123456
+     * createUserId : 1
+     * userType : 0
      */
 
     private String phoneNo;
@@ -30,10 +30,11 @@ public class LoginBean {
     private String systemeType;
     private String imei;
     private String state;
-    private String userName;
     private String userEmail;
     private long ctime;
     private String phoneModel;
+    private String createUserId;
+    private String userType;
 
     public String getPhoneNo() {
         return phoneNo;
@@ -91,14 +92,6 @@ public class LoginBean {
         this.state = state;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
     public String getUserEmail() {
         return userEmail;
     }
@@ -123,6 +116,22 @@ public class LoginBean {
         this.phoneModel = phoneModel;
     }
 
+    public String getCreateUserId() {
+        return createUserId;
+    }
+
+    public void setCreateUserId(String createUserId) {
+        this.createUserId = createUserId;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
     @Override
     public String toString() {
         return "LoginBean{" +
@@ -133,10 +142,11 @@ public class LoginBean {
                 ", systemeType='" + systemeType + '\'' +
                 ", imei='" + imei + '\'' +
                 ", state='" + state + '\'' +
-                ", userName='" + userName + '\'' +
                 ", userEmail='" + userEmail + '\'' +
                 ", ctime=" + ctime +
                 ", phoneModel='" + phoneModel + '\'' +
+                ", createUserId='" + createUserId + '\'' +
+                ", userType='" + userType + '\'' +
                 '}';
     }
 }

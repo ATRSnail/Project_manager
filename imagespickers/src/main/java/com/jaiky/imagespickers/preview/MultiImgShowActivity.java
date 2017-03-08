@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -46,7 +47,6 @@ public class MultiImgShowActivity extends Activity implements ZoomImageView.OnIs
         current = getIntent().getIntExtra("position", 0);
 
 
-
         mImageView = new ZoomImageView[imgList.size()];
         viewPager.setOffscreenPageLimit(2);
         viewPager.setAdapter(new PagerAdapter() {
@@ -55,18 +55,26 @@ public class MultiImgShowActivity extends Activity implements ZoomImageView.OnIs
                 ZoomImageView imageView = new ZoomImageView(MultiImgShowActivity.this);
 
                 String path = imgList.get(position);
-                Bitmap bitmap = buffers.get(path);
-                if (bitmap == null) {
-                    try {
-                        buffers.put(path, revitionImageSize(path));
-                    }
-                    catch (Exception ex) {
-                         buffers.put(path, BitmapFactory.decodeFile(path));
-                    }
-                    bitmap = buffers.get(path);
-                }
 
-                imageView.setImageBitmap(bitmap);
+                if (path.contains("http")) {
+                    try {
+                        imageLoader.displayImage(MultiImgShowActivity.this, path, imageView);
+                    } catch (Exception e) {
+                        Log.e("ex--->", e.toString());
+                    }
+                } else {
+                    Bitmap bitmap = buffers.get(path);
+                    if (bitmap == null) {
+                        try {
+                            buffers.put(path, revitionImageSize(path));
+                        } catch (Exception ex) {
+                            buffers.put(path, BitmapFactory.decodeFile(path));
+                        }
+                        bitmap = buffers.get(path);
+                    }
+
+                    imageView.setImageBitmap(bitmap);
+                }
 
                 container.addView(imageView);
                 setListener(imageView);

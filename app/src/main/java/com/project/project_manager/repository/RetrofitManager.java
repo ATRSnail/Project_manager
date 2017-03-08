@@ -6,9 +6,14 @@ import android.util.SparseArray;
 import com.project.project_manager.App;
 import com.project.project_manager.common.ApiConstants;
 import com.project.project_manager.common.Constants;
+import com.project.project_manager.mvp.entity.DictObjBean;
 import com.project.project_manager.mvp.entity.LinkObjectBean;
 import com.project.project_manager.mvp.entity.NodeObjectBean;
 import com.project.project_manager.mvp.entity.ProjectObjectBean;
+import com.project.project_manager.mvp.entity.PvoObjectBean;
+import com.project.project_manager.mvp.entity.TaskDetailsObjBean;
+import com.project.project_manager.mvp.entity.TaskDictionaryObjectBean;
+import com.project.project_manager.mvp.entity.TaskObjectBean;
 import com.project.project_manager.mvp.entity.response.RspLoginBean;
 import com.project.project_manager.mvp.entity.response.RspNewsBean;
 import com.project.project_manager.mvp.entity.response.base.BaseRspObj;
@@ -149,16 +154,16 @@ public class RetrofitManager {
         return mNewsService.getLogin(map);
     }
 
-    public Observable<BaseRspObj> getUpPassObservable(String phone, String passWord,String oldPassWord) {
+    public Observable<BaseRspObj> getUpPassObservable(String phone, String passWord, String oldPassWord) {
         Map<String, String> map = new HashMap<>();
         map.put("phone", phone);
         map.put("passWord", passWord);
-        map.put("oldPassWord",oldPassWord);
+        map.put("oldPassWord", oldPassWord);
         KLog.a(map.toString());
         return mNewsService.getUpPass(map);
     }
 
-    public Observable<BaseRspObj<ProjectObjectBean>> getProjectListObservable(String pageNum,String userType, String status,String userId) {
+    public Observable<BaseRspObj<ProjectObjectBean>> getProjectListObservable(String pageNum, String userType, String status, String userId) {
         Map<String, String> map = new HashMap<>();
         map.put("pageNum", pageNum);
         map.put("numPerPage", Constants.numPerPage + "");
@@ -178,13 +183,70 @@ public class RetrofitManager {
         return mNewsService.getProjectLinkList(map);
     }
 
-    public Observable<BaseRspObj<NodeObjectBean>> getProjectNodeObservable(String pageNum, String projectId,String taskCode) {
+    public Observable<BaseRspObj<NodeObjectBean>> getProjectNodeObservable(String pageNum, String projectId, String taskCode) {
         Map<String, String> map = new HashMap<>();
         map.put("pageNum", pageNum);
         map.put("numPerPage", Constants.numPerPage + "");
         map.put("projectId", projectId);
-        map.put("taskCode",taskCode);
+        map.put("taskCode", taskCode);
         KLog.a(map.toString());
         return mNewsService.getProjectNodeList(map);
     }
+
+    public Observable<BaseRspObj<TaskObjectBean>> getProjectTaskObservable(String pageNum, String projectId, String userId, String userType) {
+        Map<String, String> map = new HashMap<>();
+        map.put("pageNum", pageNum);
+        map.put("numPerPage", Constants.numPerPage + "");
+        map.put("projectId", projectId);
+        map.put("userId", userId);
+        map.put("userType", userType);
+        KLog.a(map.toString());
+        return mNewsService.getProjectTaskList(map);
+    }
+
+
+    public Observable<BaseRspObj<PvoObjectBean>> getProjectPvoObservable(String projectTaskId) {
+        Map<String, String> map = new HashMap<>();
+        map.put("projectTaskId", projectTaskId);
+        KLog.a(map.toString());
+        return mNewsService.getProjectPvoList(map);
+    }
+
+    public Observable<BaseRspObj<TaskDictionaryObjectBean>> getTaskDicList(String userId, String id) {
+        Map<String, String> map = new HashMap<>();
+        map.put("userId", userId);
+        if (!TextUtils.isEmpty(id))
+            map.put("id", id);
+        KLog.a(map.toString());
+        return mNewsService.getTaskDicList(map);
+    }
+
+    public Observable<BaseRspObj<DictObjBean>> getDicDicList(String code) {
+        Map<String, String> map = new HashMap<>();
+        map.put("code", code);
+        KLog.a(map.toString());
+        return mNewsService.getDicDicList(map);
+    }
+
+    public Observable<BaseRspObj> addTaskDis(String codes,String names,String type,String projectId,String companyType) {
+        Map<String, String> map = new HashMap<>();
+        map.put("codes", codes);
+        map.put("names", names);
+        map.put("type", type);
+        map.put("projectId", projectId);
+        map.put("companyType", companyType);
+        KLog.a(map.toString());
+        return mNewsService.addTaskDis(map);
+    }
+
+    public Observable<BaseRspObj<TaskDetailsObjBean>> getTaskDetails(String projectTaskId, String userId, String status, String userType) {
+        Map<String, String> map = new HashMap<>();
+        map.put("projectTaskId", projectTaskId);
+        map.put("userId", userId);
+        map.put("status", status);
+        map.put("userType", userType);
+        KLog.a(map.toString());
+        return mNewsService.getTaskDetails(map);
+    }
+
 }

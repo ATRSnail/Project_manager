@@ -44,8 +44,19 @@ public class LoginActivity extends BaseActivity {
     @Override
     public void initViews() {
         initDialog();
-        phoneEt.setText("18500241615");
+        phoneEt.setText("13521884420");
         passwordEt.setText("a123456");
+
+//        甲方用户
+//        18500241615
+//
+//        乙方用户
+//        15112345678    监管方
+//        15187654321    设计方
+//        15101659243    施工方
+//
+//
+//        密码：a123456
     }
 
     private void initDialog() {
@@ -84,6 +95,8 @@ public class LoginActivity extends BaseActivity {
                         KLog.e(e.toString());
                         pDialog.dismiss();
                         UT.show(e.getMessage());
+                        startActivity(new Intent(LoginActivity.this, MainTabActivity.class));
+                        LoginActivity.this.finish();
                     }
 
                     @Override
@@ -94,7 +107,7 @@ public class LoginActivity extends BaseActivity {
                         if (rspUserBean.getHead().getRspCode().equals("0")) {
                             UsrMgr.cacheUserInfo(new Gson().toJson(rspUserBean.getBody().getUser()));
                             KLog.a("userInfo--->" + UsrMgr.getUseInfo().toString());
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            startActivity(new Intent(LoginActivity.this, MainTabActivity.class));
                             LoginActivity.this.finish();
 
                         }

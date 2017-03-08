@@ -1,21 +1,23 @@
 package com.project.project_manager.repository;
 
 import com.project.project_manager.common.ApiConstants;
+import com.project.project_manager.mvp.entity.DictObjBean;
 import com.project.project_manager.mvp.entity.LinkObjectBean;
 import com.project.project_manager.mvp.entity.NodeObjectBean;
 import com.project.project_manager.mvp.entity.ProjectObjectBean;
+import com.project.project_manager.mvp.entity.PvoObjectBean;
+import com.project.project_manager.mvp.entity.TaskDetailsObjBean;
+import com.project.project_manager.mvp.entity.TaskDictionaryObjectBean;
+import com.project.project_manager.mvp.entity.TaskObjectBean;
 import com.project.project_manager.mvp.entity.response.RspLoginBean;
 import com.project.project_manager.mvp.entity.response.RspNewsBean;
 import com.project.project_manager.mvp.entity.response.base.BaseRspObj;
 
 import java.util.Map;
 
-import okhttp3.ResponseBody;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Url;
 import rx.Observable;
 
 /**
@@ -28,11 +30,6 @@ public interface NewsService {
     @FormUrlEncoded
     @POST(ApiConstants.NEWS_URL)
     Observable<RspNewsBean> getNewsList(@FieldMap Map<String, String> map);
-
-    @GET
-    Observable<ResponseBody> getNewsBodyHtmlPhoto(
-            @Url String photoPath);
-
 
     @FormUrlEncoded
     @POST(ApiConstants.LOGIN_URL)
@@ -54,4 +51,31 @@ public interface NewsService {
     @POST(ApiConstants.PROJECT_NODES_URL)
     Observable<BaseRspObj<NodeObjectBean>> getProjectNodeList(@FieldMap Map<String, String> map);
 
+    @FormUrlEncoded
+    @POST(ApiConstants.PROJECT_TASKS_URL)
+    Observable<BaseRspObj<TaskObjectBean>> getProjectTaskList(@FieldMap Map<String, String> map);
+
+    @FormUrlEncoded
+    @POST(ApiConstants.TASK_DETAIL_URL)
+    Observable<BaseRspObj<PvoObjectBean>> getProjectPvoList(@FieldMap Map<String, String> map);
+
+
+    @FormUrlEncoded
+    @POST(ApiConstants.WAIT_DO_DETAIL_URL)
+    Observable<BaseRspObj<TaskDictionaryObjectBean>> getTaskDicList(@FieldMap Map<String, String> map);
+
+
+    @FormUrlEncoded
+    @POST(ApiConstants.INDEX_DIC_URL)
+    Observable<BaseRspObj<DictObjBean>> getDicDicList(@FieldMap Map<String, String> map);
+
+
+    @FormUrlEncoded
+    @POST(ApiConstants.ADD_TASK_DIC_URL)
+    Observable<BaseRspObj> addTaskDis(@FieldMap Map<String, String> map);
+
+
+    @FormUrlEncoded
+    @POST(ApiConstants.TASK_LINK_DETAILS_URL)
+    Observable<BaseRspObj<TaskDetailsObjBean>> getTaskDetails(@FieldMap Map<String, String> map);
 }

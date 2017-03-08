@@ -1,7 +1,6 @@
 package com.project.project_manager.mvp.ui.activity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,8 +10,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.project.project_manager.R;
 import com.project.project_manager.common.Constants;
 import com.project.project_manager.common.LoadNewsType;
-import com.project.project_manager.mvp.entity.BaseNewBean;
-import com.project.project_manager.mvp.presenter.impl.NewsPresenterImpl;
+import com.project.project_manager.common.UsrMgr;
+import com.project.project_manager.mvp.entity.ProjectBean;
+import com.project.project_manager.mvp.presenter.impl.ProjectsPresenterImpl;
 import com.project.project_manager.mvp.ui.activity.base.BaseRefreshActivity;
 import com.project.project_manager.mvp.ui.adapter.NeedToDoAdapter;
 import com.project.project_manager.mvp.ui.view.base.BaseListView;
@@ -29,16 +29,16 @@ import javax.inject.Inject;
  */
 public class NeedToDoActivity extends BaseRefreshActivity implements BaseQuickAdapter.OnRecyclerViewItemClickListener
         , BaseQuickAdapter.RequestLoadMoreListener
-        , BaseListView<BaseNewBean> {
+        , BaseListView<ProjectBean> {
 
 
-    private List<BaseNewBean> been;
+    private List<ProjectBean> been;
     private NeedToDoAdapter needToDoAdapter;
 
     @Inject
     Activity mActivity;
     @Inject
-    NewsPresenterImpl mNewsPresenter;
+    ProjectsPresenterImpl mNewsPresenter;
 
     @Override
     public void onRefreshView() {
@@ -59,13 +59,12 @@ public class NeedToDoActivity extends BaseRefreshActivity implements BaseQuickAd
     public void initViews() {
         super.initViews();
         setCustomTitle("待办");
-        setRightBtnClick(new addNeedBtnClick());
         initRecyclerView();
         initPresenter();
     }
 
     private void initPresenter() {
-        mNewsPresenter.setNewsTypeAndId(pageNum, "");
+        mNewsPresenter.setNewsTypeAndId(pageNum, "0","1", UsrMgr.getUseId());
         mNewsPresenter.attachView(this);
         mPresenter = mNewsPresenter;
         mPresenter.onCreate();
@@ -89,7 +88,7 @@ public class NeedToDoActivity extends BaseRefreshActivity implements BaseQuickAd
 
     @Override
     public void onItemClick(View view, int i) {
-        startActivity(new Intent(mActivity, ProjectItemsActivity.class));
+        needToDoAdapter.getItem(i).intentToTask(mActivity);
     }
 
     @Override
@@ -98,22 +97,26 @@ public class NeedToDoActivity extends BaseRefreshActivity implements BaseQuickAd
     }
 
     @Override
-    public void setList(List<BaseNewBean> newsSummary, @LoadNewsType.checker int loadType) {
+    public void setList(List<ProjectBean> newsSummary, @LoadNewsType.checker int loadType) {
         switch (loadType) {
             case LoadNewsType.TYPE_REFRESH_SUCCESS:
                 mSwipeRefreshLayout.setRefreshing(false);
+                if (newsSummary == null) return;
                 needToDoAdapter.setNewData(newsSummary);
                 break;
             case LoadNewsType.TYPE_REFRESH_ERROR:
                 mSwipeRefreshLayout.setRefreshing(false);
                 break;
             case LoadNewsType.TYPE_LOAD_MORE_SUCCESS:
-                if (newsSummary == null || newsSummary.size() == 0) {
-                    Snackbar.make(mRecyclerView, getString(R.string.no_more), Snackbar.LENGTH_SHORT).show();
-                } else {
+                if (newsSummary == null)
+                    return;
+
+                if (newsSummary.size() == Constants.numPerPage){
                     needToDoAdapter.notifyDataChangedAfterLoadMore(newsSummary, true);
+                }else {
+                    needToDoAdapter.notifyDataChangedAfterLoadMore(newsSummary, false);
+                    Snackbar.make(mRecyclerView, getString(R.string.no_more), Snackbar.LENGTH_SHORT).show();
                 }
-                break;
             case LoadNewsType.TYPE_LOAD_MORE_ERROR:
 
                 break;
@@ -139,11 +142,4 @@ public class NeedToDoActivity extends BaseRefreshActivity implements BaseQuickAd
         }
     }
 
-    private class addNeedBtnClick implements View.OnClickListener{
-
-        @Override
-        public void onClick(View view) {
-            mActivity.startActivity(new Intent(NeedToDoActivity.this,AddNeedActivity.class));
-        }
-    }
 }

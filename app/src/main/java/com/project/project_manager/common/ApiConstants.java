@@ -14,6 +14,7 @@ public class ApiConstants {
     //线上
 //    public static final String NETEAST_HOST = "http://59.108.94.40:9100/";
 
+    public static String IMG_HOST = NETEAST_HOST+"file/";
     public static String getHost() {
         return NETEAST_HOST;
     }
@@ -34,6 +35,24 @@ public class ApiConstants {
 
     //归档节点列表
     public static final String PROJECT_NODES_URL = "/gcjg-api/project/nodeList";
+
+    //待办节点列表
+    public static final String PROJECT_TASKS_URL = "/gcjg-api/project/getTaskList";
+
+    //查询归档节点详情
+    public static final String TASK_DETAIL_URL = "/gcjg-api/project/getTask";
+
+    //获取环节接口
+    public static final String WAIT_DO_DETAIL_URL = "/gcjg-api/waitDo/listLink";
+
+    //获取字典
+    public static final String INDEX_DIC_URL = "/gcjg-api/index/getDic";
+
+    //添加待办接口
+    public static final String ADD_TASK_DIC_URL = "/gcjg-api/project/task/addTaskDis";
+
+    //查询待办节点详情
+    public static final String TASK_LINK_DETAILS_URL = "/gcjg-api/project/getTaskDetails";
 
 
 }

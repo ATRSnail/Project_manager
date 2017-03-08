@@ -6,6 +6,8 @@ import android.content.Context;
 import com.project.project_manager.di.module.FragmentModule;
 import com.project.project_manager.di.scope.ContextLife;
 import com.project.project_manager.di.scope.PerFragment;
+import com.project.project_manager.mvp.ui.fragment.FillFragment;
+import com.project.project_manager.mvp.ui.fragment.HomeFragment;
 
 import dagger.Component;
 
@@ -24,4 +26,8 @@ public interface FragmentComponent {
     Context getApplicationContext();
 
     Activity getActivity();
+
+    void inject(FillFragment fillFragment);
+
+    void inject(HomeFragment homeFragment);
 }

@@ -1,7 +1,6 @@
 package com.project.project_manager.mvp.ui.activity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +10,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.project.project_manager.R;
 import com.project.project_manager.common.Constants;
 import com.project.project_manager.common.LoadNewsType;
+import com.project.project_manager.mvp.entity.LinkBean;
 import com.project.project_manager.mvp.entity.NodeBean;
 import com.project.project_manager.mvp.presenter.impl.ProjectNodesPresenterImpl;
 import com.project.project_manager.mvp.ui.activity.base.BaseRefreshActivity;
@@ -24,6 +24,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import static com.project.project_manager.mvp.entity.LinkBean.LINK_KEY;
+import static com.project.project_manager.mvp.entity.LinkBean.P_KEY;
+
 public class NodesActivity extends BaseRefreshActivity implements BaseQuickAdapter.OnRecyclerViewItemClickListener
         , BaseQuickAdapter.RequestLoadMoreListener
         , BaseListView<NodeBean> {
@@ -35,6 +38,9 @@ public class NodesActivity extends BaseRefreshActivity implements BaseQuickAdapt
     Activity mActivity;
     @Inject
     ProjectNodesPresenterImpl mNewsPresenter;
+
+    private LinkBean linkBean;
+    private String pId;
 
     @Override
     public void onRefreshView() {
@@ -55,12 +61,19 @@ public class NodesActivity extends BaseRefreshActivity implements BaseQuickAdapt
     public void initViews() {
         super.initViews();
         setCustomTitle("节点");
+        initIntentDate();
         initRecyclerView();
         initPresenter();
     }
 
+    private void initIntentDate() {
+        linkBean = (LinkBean) getIntent().getSerializableExtra(LINK_KEY);
+        pId = getIntent().getStringExtra(P_KEY);
+    }
+
+
     private void initPresenter() {
-        mNewsPresenter.setNewsTypeAndId(pageNum, "","");
+        mNewsPresenter.setNewsTypeAndId(pageNum, pId,linkBean.getTaskCode());
         mNewsPresenter.attachView(this);
         mPresenter = mNewsPresenter;
         mPresenter.onCreate();
@@ -84,7 +97,7 @@ public class NodesActivity extends BaseRefreshActivity implements BaseQuickAdapt
 
     @Override
     public void onItemClick(View view, int i) {
-        startActivity(new Intent(mActivity, ConstructionActivity.class));
+        needToDoAdapter.getItem(i).intentToNext(mActivity);
     }
 
     @Override

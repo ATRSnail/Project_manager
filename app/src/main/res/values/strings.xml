@@ -1,4 +1,10 @@
 <resources>
+    <!-- 页面名称 -->
+    <string name="main_navigation_home">首页</string>
+    <string name="main_navigation_im">归档</string>
+    <string name="main_navigation_interest">通讯录</string>
+    <string name="main_navigation_user">我的</string>
+
     <string name="app_name">Project_manager</string>
     <string name="internet_error">网络异常,请检查网络设置</string>
     <string name="load_error">加载失败</string>

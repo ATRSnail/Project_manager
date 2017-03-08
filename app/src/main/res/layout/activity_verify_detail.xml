@@ -37,6 +37,7 @@
                         android:text="@string/pro_name" />
 
                     <TextView
+                        android:id="@+id/tv_project_name"
                         style="@style/text_999_16"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
@@ -55,6 +56,7 @@
                         android:text="@string/pro_cate" />
 
                     <TextView
+                        android:id="@+id/tv_cate"
                         style="@style/text_999_16"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
@@ -73,6 +75,7 @@
                         android:text="@string/pro_link" />
 
                     <TextView
+                        android:id="@+id/tv_link"
                         style="@style/text_999_16"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
@@ -91,6 +94,7 @@
                         android:text="@string/pro_node" />
 
                     <TextView
+                        android:id="@+id/tv_point"
                         style="@style/text_999_16"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
@@ -109,6 +113,7 @@
                         android:text="@string/pro_unit" />
 
                     <TextView
+                        android:id="@+id/tv_company_name"
                         style="@style/text_999_16"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
@@ -127,6 +132,7 @@
                         android:text="@string/pro_executor" />
 
                     <TextView
+                        android:id="@+id/tv_people"
                         style="@style/text_999_16"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"

@@ -29,7 +29,6 @@ public class ProjectsPresenterImpl extends BasePresenterImpl<BaseListView<Projec
     private String userId;
     private String userType;
     private String status;
-    private String typeId;
     private boolean mIsRefresh = true;
     private boolean misFirstLoad;
 

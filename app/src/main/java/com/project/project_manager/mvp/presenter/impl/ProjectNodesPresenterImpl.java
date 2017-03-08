@@ -27,9 +27,7 @@ public class ProjectNodesPresenterImpl extends BasePresenterImpl<BaseListView<No
     private ProjectNodesInteractor mNewsInteractor;
     private int pageNum;
     private String taskCode;
-    private String userType;
     private String projectId;
-    private String typeId;
     private boolean mIsRefresh = true;
     private boolean misFirstLoad;
 

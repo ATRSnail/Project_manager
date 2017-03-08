@@ -13,5 +13,5 @@ public interface BasePresenter {
 
     void onCreate();
     void attachView(@NonNull BaseView view);
-    void onDestroy();
+    void onDestory();
 }

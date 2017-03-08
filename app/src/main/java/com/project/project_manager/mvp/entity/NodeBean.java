@@ -1,13 +1,21 @@
 package com.project.project_manager.mvp.entity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+
+import com.project.project_manager.mvp.ui.activity.ConstructionActivity;
+
+import java.io.Serializable;
+
 /**
  * @author xch
  * @version 1.0
  * @create_date 2017/3/1
  */
 
-public class NodeBean {
-
+public class NodeBean implements Serializable{
+    public static final String NODE_KEY = "node_key";
 
     /**
      * id : 242
@@ -32,6 +40,14 @@ public class NodeBean {
     private String taskCode;
     private long ctime;
     private String nodeCode;
+
+    public void intentToNext(Context context){
+        Intent intent = new Intent(context,ConstructionActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(NODE_KEY,this);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
 
     public int getId() {
         return id;

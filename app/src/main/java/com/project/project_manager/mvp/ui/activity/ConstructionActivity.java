@@ -20,9 +20,16 @@ import com.jaiky.imagespickers.container.SimpleImageAdapter;
 import com.jaiky.imagespickers.utils.FileUtils;
 import com.jaiky.imagespickers.utils.Utils;
 import com.project.project_manager.R;
+import com.project.project_manager.mvp.entity.NodeBean;
+import com.project.project_manager.mvp.entity.PvoObjectBean;
+import com.project.project_manager.mvp.entity.ResourceBean;
+import com.project.project_manager.mvp.entity.response.base.BaseRspObj;
 import com.project.project_manager.mvp.ui.activity.base.BaseActivity;
+import com.project.project_manager.repository.RetrofitManager;
 import com.project.project_manager.utils.GlideLoader;
+import com.project.project_manager.utils.TransformUtils;
 import com.project.project_manager.utils.UT;
+import com.socks.library.KLog;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -35,6 +42,10 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 import io.github.memfis19.annca.Annca;
 import io.github.memfis19.annca.internal.configuration.AnncaConfiguration;
+import rx.Subscriber;
+
+import static com.project.project_manager.common.ApiConstants.IMG_HOST;
+import static com.project.project_manager.mvp.entity.NodeBean.NODE_KEY;
 
 /**
  * 施工方
@@ -42,9 +53,7 @@ import io.github.memfis19.annca.internal.configuration.AnncaConfiguration;
 public class ConstructionActivity extends BaseActivity {
     private static final int REQUEST_CAMERA_PERMISSIONS = 931;
     private static final int CAPTURE_MEDIA = 368;
-    private ArrayList<String> path = new ArrayList<>();
-    private ArrayList<String> pathList = new ArrayList<String>();
-    public static final int REQUEST_CODE = 123;
+    private ArrayList<String> pathList = new ArrayList<>();
     @BindView(R.id.btn_video)
     Button mBtnRecord;
     @BindView(R.id.btn_take_photo)
@@ -57,7 +66,7 @@ public class ConstructionActivity extends BaseActivity {
 
 //    private ImageConfig imageConfig;
 
-
+    private NodeBean nodeBean;
     @Inject
     Activity mActivity;
 
@@ -91,20 +100,48 @@ public class ConstructionActivity extends BaseActivity {
         } else {
             enableCamera();
         }
+        initIntentDate();
+        postDataFroUrl();
+        setContainer(llContainer, 3, true);
     }
 
-//    @OnClick(R.id.btn_video)
-//    public void onClick(View view){
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            /**
-//             * 请求权限是一个异步任务  不是立即请求就能得到结果 在结果回调中返回
-//             */
-//            requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE,
-//                    Manifest.permission.RECORD_AUDIO}, CAMERA_OK);
-//        } else {
-//            startActivity(new Intent(this,RecordActivity.class));
-//        }
-//    }
+    private void initIntentDate() {
+        nodeBean = (NodeBean) getIntent().getSerializableExtra(NODE_KEY);
+    }
+
+    private void postDataFroUrl() {
+
+        RetrofitManager.getInstance(1).getProjectPvoObservable(nodeBean.getId() + "")
+                .compose(TransformUtils.<BaseRspObj<PvoObjectBean>>defaultSchedulers())
+                .subscribe(new Subscriber<BaseRspObj<PvoObjectBean>>() {
+
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(BaseRspObj<PvoObjectBean> pvoObjectBeanBaseRspObj) {
+                        KLog.a("pvoObjectBeanBaseRspObj---" + pvoObjectBeanBaseRspObj.toString());
+                        if (pvoObjectBeanBaseRspObj.getHead().getRspCode().equals("0")) {
+                            List<ResourceBean> resources = pvoObjectBeanBaseRspObj.getBody().getPvo().getList();
+                            if (resources.size() > 0) {
+                                for (ResourceBean res : resources) {
+                                    if (res.getResourceType().equals("0")) {
+                                        pathList.add(IMG_HOST + res.getResourceUrl());
+                                    }
+                                }
+                            }
+                            containerAdapter.refreshData(pathList, new GlideLoader());
+                        }
+                    }
+                });
+    }
 
     protected void enableCamera() {
         mBtnRecord.setOnClickListener(onClickListener);
@@ -124,32 +161,6 @@ public class ConstructionActivity extends BaseActivity {
                     new Annca(videoLimited.build()).launchCamera();
                     break;
                 case R.id.btn_take_photo:
-                    setContainer(llContainer, 3, true);
-//                    AnncaConfiguration.Builder photo = new AnncaConfiguration.Builder(mActivity, CAPTURE_MEDIA);
-//                    photo.setMediaAction(AnncaConfiguration.MEDIA_ACTION_PHOTO);
-//                    photo.setMediaQuality(AnncaConfiguration.MEDIA_QUALITY_LOW);
-//                    new Annca(photo.build()).launchCamera();
-//                    imageConfig = new ImageConfig.Builder(
-//                            new GlideLoader())
-//                            .steepToolBarColor(getResources().getColor(R.color.titleBlue))
-//                            .titleBgColor(getResources().getColor(R.color.titleBlue))
-//                            .titleSubmitTextColor(getResources().getColor(R.color.white))
-//                            .titleTextColor(getResources().getColor(R.color.white))
-//                            // 开启多选   （默认为多选）
-//                            .mutiSelect()
-//                            // 多选时的最大数量   （默认 9 张）
-//                            .mutiSelectMaxSize(9)
-//                            //设置图片显示容器，参数：、（容器，每行显示数量，是否可删除）
-//                            .setContainer(llContainer, 4, true)
-//                            // 已选择的图片路径
-//                            .pathList(path)
-//                            // 拍照后存放的图片路径（默认 /temp/picture）
-//                            .filePath("/temp")
-//                            // 开启拍照功能 （默认关闭）
-//                            .showCamera()
-//                            .requestCode(REQUEST_CODE)
-//                            .build();
-//                    ImageSelector.open(ConstructionActivity.this, imageConfig);
                     showCameraAction();
                     break;
             }
@@ -202,7 +213,7 @@ public class ConstructionActivity extends BaseActivity {
                 if (tempFile != null) {
                     pathList.add(tempFile.getAbsolutePath());
                     //改变gridview的内容
-                    if (containerAdapter!= null) {
+                    if (containerAdapter != null) {
                         containerAdapter.refreshData(pathList, new GlideLoader());
                     }
                 }
@@ -213,7 +224,9 @@ public class ConstructionActivity extends BaseActivity {
             }
         }
     }
+
     private SimpleImageAdapter containerAdapter;
+
     public void setContainer(ViewGroup container, int rowImageCount, boolean isDelete) {
         if (container.getChildCount() == 0) {
             //新建一个GridView
@@ -238,8 +251,7 @@ public class ConstructionActivity extends BaseActivity {
             containerAdapter = new SimpleImageAdapter(container, isDelete, rowImageCount);
             gvView.setAdapter(containerAdapter);
             container.addView(gvView);
-        }
-        else {
+        } else {
             GridViewForScrollView gvView = (GridViewForScrollView) container.getChildAt(0);
             containerAdapter = (SimpleImageAdapter) gvView.getAdapter();
         }

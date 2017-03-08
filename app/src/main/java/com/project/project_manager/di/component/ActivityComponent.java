@@ -3,6 +3,7 @@ package com.project.project_manager.di.component;
 import android.app.Activity;
 import android.content.Context;
 
+import com.project.project_manager.mvp.ui.activity.AddNeedActivity;
 import com.project.project_manager.mvp.ui.activity.ConstructionActivity;
 import com.project.project_manager.mvp.ui.activity.FillListActivity;
 import com.project.project_manager.mvp.ui.activity.LinkActivity;
@@ -52,4 +53,6 @@ public interface ActivityComponent {
     void inject(ConstructionActivity constructionActivity);
 
     void inject(RecordActivity recordActivity);
+
+    void inject(AddNeedActivity addNeedActivity);
 }

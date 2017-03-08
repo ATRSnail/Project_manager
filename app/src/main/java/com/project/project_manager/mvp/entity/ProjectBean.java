@@ -1,13 +1,23 @@
 package com.project.project_manager.mvp.entity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+
+import com.project.project_manager.mvp.ui.activity.AddNeedActivity;
+import com.project.project_manager.mvp.ui.activity.LinkActivity;
+import com.project.project_manager.mvp.ui.activity.ProjectItemsActivity;
+
+import java.io.Serializable;
+
 /**
  * @author xch
  * @version 1.0
  * @create_date 2017/3/1
  */
 
-public class ProjectBean {
-
+public class ProjectBean implements Serializable{
+     public static final String PROJECT_KEY = "project_key";
 
     /**
      * uid : 1
@@ -34,6 +44,30 @@ public class ProjectBean {
     private long ctime;
     private String projectName;
     private long projectBeginTime;
+
+    public void intentToNext(Context context){
+        Intent intent = new Intent(context,LinkActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(PROJECT_KEY,this);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
+
+    public void intentToAdd(Context context){
+        Intent intent = new Intent(context,AddNeedActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(PROJECT_KEY,this);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
+
+    public void intentToTask(Context context){
+        Intent intent = new Intent(context,ProjectItemsActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(PROJECT_KEY,this);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
 
     public String getUid() {
         return uid;

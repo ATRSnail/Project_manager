@@ -1,13 +1,22 @@
 package com.project.project_manager.mvp.entity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+
+import com.project.project_manager.mvp.ui.activity.NodesActivity;
+
+import java.io.Serializable;
+
 /**
  * @author xch
  * @version 1.0
  * @create_date 2017/3/1
  */
 
-public class LinkBean {
-
+public class LinkBean implements Serializable{
+    public static final String LINK_KEY = "link_key";
+    public static final String P_KEY = "p_id";
     /**
      * id : 320
      * utime : null
@@ -31,6 +40,15 @@ public class LinkBean {
     private String taskCode;
     private long ctime;
     private Object nodeCode;
+
+    public void intentToNext(Context context,String pId){
+        Intent intent = new Intent(context,NodesActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(LINK_KEY,this);
+        bundle.putString(P_KEY,  pId);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
 
     public int getId() {
         return id;
