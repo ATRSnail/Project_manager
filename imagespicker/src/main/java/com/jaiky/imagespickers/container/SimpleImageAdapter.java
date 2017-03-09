@@ -2,6 +2,7 @@ package com.jaiky.imagespickers.container;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -33,9 +34,11 @@ public class SimpleImageAdapter extends CommonAdapter<String> {
 	private void initImgSize() {
 		//带删除
 		if (isDelete) {
+			Log.e("containerWidth--->", containerWidth+"");
             // 如果行数为4，中间间隔3个3dp共9dp + 距离右边4个8dp共32dp
             int size = containerWidth - Utils.dip2px(mContext, 3 * (rowCount -1) + 8 * rowCount);
             size = Math.round(size / (float)rowCount);
+			Log.e("ex--->", size+"");
             fl = new FrameLayout.LayoutParams(size, size);
             //填充上右，为删除按钮让出空间
 			fl.setMargins(0, Utils.dip2px(mContext, 8), Utils.dip2px(mContext, 8), 0);

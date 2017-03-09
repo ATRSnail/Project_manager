@@ -101,7 +101,6 @@ public class VerifyDetailActivity extends BaseActivity {
     }
 
     private void initDateToView(TaskDetailsBean ta){
-
         tv_project_name.setText(ta.getProjectName());
         tv_cate.setText(ta.getTaskDictionary().getName());
         tv_link.setText(ta.getTaskDictionary().getName());

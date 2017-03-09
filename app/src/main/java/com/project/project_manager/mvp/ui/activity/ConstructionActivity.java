@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import com.jaiky.imagespickers.container.GridViewForScrollView;
 import com.jaiky.imagespickers.container.SimpleImageAdapter;
 import com.jaiky.imagespickers.utils.FileUtils;
+import com.jaiky.imagespickers.utils.GlideLoader;
 import com.jaiky.imagespickers.utils.Utils;
 import com.project.project_manager.R;
 import com.project.project_manager.mvp.entity.NodeBean;
@@ -26,7 +27,6 @@ import com.project.project_manager.mvp.entity.ResourceBean;
 import com.project.project_manager.mvp.entity.response.base.BaseRspObj;
 import com.project.project_manager.mvp.ui.activity.base.BaseActivity;
 import com.project.project_manager.repository.RetrofitManager;
-import com.project.project_manager.utils.GlideLoader;
 import com.project.project_manager.utils.TransformUtils;
 import com.project.project_manager.utils.UT;
 import com.socks.library.KLog;
@@ -102,7 +102,6 @@ public class ConstructionActivity extends BaseActivity {
         }
         initIntentDate();
         postDataFroUrl();
-        setContainer(llContainer, 3, true);
     }
 
     private void initIntentDate() {
@@ -137,7 +136,7 @@ public class ConstructionActivity extends BaseActivity {
                                     }
                                 }
                             }
-                            containerAdapter.refreshData(pathList, new GlideLoader());
+                      //      containerAdapter.refreshData(pathList, new GlideLoader());
                         }
                     }
                 });
@@ -161,6 +160,7 @@ public class ConstructionActivity extends BaseActivity {
                     new Annca(videoLimited.build()).launchCamera();
                     break;
                 case R.id.btn_take_photo:
+                    setContainer(llContainer, 3, true);
                     showCameraAction();
                     break;
             }
@@ -251,7 +251,8 @@ public class ConstructionActivity extends BaseActivity {
             containerAdapter = new SimpleImageAdapter(container, isDelete, rowImageCount);
             gvView.setAdapter(containerAdapter);
             container.addView(gvView);
-        } else {
+        }
+        else {
             GridViewForScrollView gvView = (GridViewForScrollView) container.getChildAt(0);
             containerAdapter = (SimpleImageAdapter) gvView.getAdapter();
         }

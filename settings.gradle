@@ -1,1 +1,1 @@
-include ':app', ':jcvideoplayer-lib', ':annca', ':imagespickers'
+include ':app', ':jcvideoplayer-lib', ':annca', ':imagespicker'
