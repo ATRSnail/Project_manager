@@ -4,11 +4,11 @@
     android:id="@+id/activity_construction"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context=".mvp.ui.activity.ConstructionActivity">
 
-    <include layout="@layout/layout_main_header"/>
+    <include layout="@layout/layout_main_header" />
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -38,6 +38,7 @@
                         android:text="@string/pro_name" />
 
                     <TextView
+                        android:id="@+id/tv_project_name"
                         style="@style/text_999_16"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
@@ -56,6 +57,7 @@
                         android:text="@string/pro_cate" />
 
                     <TextView
+                        android:id="@+id/tv_cate"
                         style="@style/text_999_16"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
@@ -74,6 +76,7 @@
                         android:text="@string/pro_link" />
 
                     <TextView
+                        android:id="@+id/tv_link"
                         style="@style/text_999_16"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
@@ -92,6 +95,7 @@
                         android:text="@string/pro_node" />
 
                     <TextView
+                        android:id="@+id/tv_point"
                         style="@style/text_999_16"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
@@ -110,6 +114,7 @@
                         android:text="@string/pro_unit" />
 
                     <TextView
+                        android:id="@+id/tv_company_name"
                         style="@style/text_999_16"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
@@ -128,6 +133,7 @@
                         android:text="@string/pro_executor" />
 
                     <TextView
+                        android:id="@+id/tv_people"
                         style="@style/text_999_16"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
@@ -155,52 +161,18 @@
                 android:id="@+id/llContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:orientation="vertical">
-            </LinearLayout>
+                android:layout_marginTop="10dp"
+                android:orientation="vertical" />
 
             <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
                 android:id="@+id/videoplayer"
-                android:layout_marginTop="10.0dip"
                 android:layout_width="match_parent"
-                android:layout_height="210dp" />
+                android:layout_height="210dp"
+                android:layout_marginTop="10.0dip"
+                android:visibility="gone" />
 
-            <Button
-                android:id="@+id/btn_take_photo"
-                android:layout_width="fill_parent"
-                android:layout_height="40.0dip"
-                android:layout_marginLeft="15.0dip"
-                android:layout_marginRight="15.0dip"
-                android:layout_marginTop="50.0dip"
-                android:background="@drawable/white_circle_5"
-                android:text="拍照"
-                android:textColor="@color/color_039bfb"
-                android:textSize="16.0sp" />
-
-            <Button
-                android:id="@+id/btn_video"
-                android:layout_width="fill_parent"
-                android:layout_height="40.0dip"
-                android:layout_marginLeft="15.0dip"
-                android:layout_marginRight="15.0dip"
-                android:layout_marginTop="15.0dip"
-                android:background="@drawable/grey_circle_5"
-                android:text="视频"
-                android:textColor="@color/color_039bfb"
-                android:textSize="16.0sp" />
-
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="40.0dip"
-                android:layout_marginLeft="15.0dip"
-                android:layout_marginRight="15.0dip"
-                android:layout_marginTop="15.0dip"
-                android:background="@drawable/blue_circle_5"
-                android:text="上传"
-                android:textColor="#ffffffff"
-                android:textSize="16.0sp" />
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

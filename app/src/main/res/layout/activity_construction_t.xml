@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_construction"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".mvp.ui.activity.ConstructionActivity">
+
+    <include layout="@layout/layout_main_header" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/white_circle_5"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        style="@style/text_333_16"
+                        android:layout_centerVertical="true"
+                        android:text="@string/pro_name" />
+
+                    <TextView
+                        android:id="@+id/tv_project_name"
+                        style="@style/text_999_16"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="项目A" />
+                </RelativeLayout>
+
+                <View style="@style/view_A8A8A8_border" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        style="@style/text_333_16"
+                        android:layout_centerVertical="true"
+                        android:text="@string/pro_cate" />
+
+                    <TextView
+                        android:id="@+id/tv_cate"
+                        style="@style/text_999_16"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="项目A" />
+                </RelativeLayout>
+
+                <View style="@style/view_A8A8A8_border" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        style="@style/text_333_16"
+                        android:layout_centerVertical="true"
+                        android:text="@string/pro_link" />
+
+                    <TextView
+                        android:id="@+id/tv_link"
+                        style="@style/text_999_16"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="项目A" />
+                </RelativeLayout>
+
+                <View style="@style/view_A8A8A8_border" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        style="@style/text_333_16"
+                        android:layout_centerVertical="true"
+                        android:text="@string/pro_node" />
+
+                    <TextView
+                        android:id="@+id/tv_point"
+                        style="@style/text_999_16"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="项目A" />
+                </RelativeLayout>
+
+                <View style="@style/view_A8A8A8_border" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        style="@style/text_333_16"
+                        android:layout_centerVertical="true"
+                        android:text="@string/pro_unit" />
+
+                    <TextView
+                        android:id="@+id/tv_company_name"
+                        style="@style/text_999_16"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="项目A" />
+                </RelativeLayout>
+
+                <View style="@style/view_A8A8A8_border" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        style="@style/text_333_16"
+                        android:layout_centerVertical="true"
+                        android:text="@string/pro_executor" />
+
+                    <TextView
+                        android:id="@+id/tv_people"
+                        style="@style/text_999_16"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="项目A" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        style="@style/text_333_16"
+                        android:layout_centerVertical="true"
+                        android:text="@string/pro_demand" />
+
+                    <TextView
+                        android:id="@+id/tv_demand"
+                        style="@style/text_999_16"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="项目A" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        style="@style/text_333_16"
+                        android:layout_centerVertical="true"
+                        android:text="分配地址:" />
+
+                    <TextView
+                        android:id="@+id/tv_position"
+                        style="@style/text_999_16"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="项目A" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+
+                    <TextView
+                        style="@style/text_333_16"
+                        android:layout_centerVertical="true"
+                        android:text="真实地址:" />
+
+                    <TextView
+                        android:id="@+id/tv_reallyPosition"
+                        style="@style/text_999_16"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="项目A" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical" />
+
+            <FrameLayout
+                android:id="@+id/fl_video"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
+                    android:id="@+id/videoplayer"
+                    android:layout_width="match_parent"
+                    android:layout_height="210dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10.0dip" />
+
+                <ImageView
+                    android:id="@+id/img_delete"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="right"
+                    android:contentDescription="@null"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/global_icon_deletecross" />
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_option"
+                style="@style/text_333_16"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:gravity="top"
+                android:text="@string/pro_opinion"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/ll_btn_contain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/btn_take_photo"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40.0dip"
+                    android:layout_marginLeft="15.0dip"
+                    android:layout_marginRight="15.0dip"
+                    android:layout_marginTop="20.0dip"
+                    android:background="@drawable/white_circle_5"
+                    android:text="拍照"
+                    android:textColor="@color/color_039bfb"
+                    android:textSize="16.0sp" />
+
+                <Button
+                    android:id="@+id/btn_video"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40.0dip"
+                    android:layout_marginLeft="15.0dip"
+                    android:layout_marginRight="15.0dip"
+                    android:layout_marginTop="15.0dip"
+                    android:background="@drawable/grey_circle_5"
+                    android:text="视频"
+                    android:textColor="@color/color_039bfb"
+                    android:textSize="16.0sp" />
+
+                <Button
+                    android:id="@+id/btn_save"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40.0dip"
+                    android:layout_marginLeft="15.0dip"
+                    android:layout_marginRight="15.0dip"
+                    android:layout_marginTop="15.0dip"
+                    android:background="@drawable/blue_circle_5"
+                    android:text="上传"
+                    android:textColor="#ffffffff"
+                    android:textSize="16.0sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

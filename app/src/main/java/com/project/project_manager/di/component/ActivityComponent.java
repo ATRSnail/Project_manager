@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.project.project_manager.mvp.ui.activity.AddNeedActivity;
 import com.project.project_manager.mvp.ui.activity.ConstructionActivity;
+import com.project.project_manager.mvp.ui.activity.ConstructionTActivity;
 import com.project.project_manager.mvp.ui.activity.FillListActivity;
 import com.project.project_manager.mvp.ui.activity.LinkActivity;
 import com.project.project_manager.mvp.ui.activity.MainActivity;
@@ -55,4 +56,6 @@ public interface ActivityComponent {
     void inject(RecordActivity recordActivity);
 
     void inject(AddNeedActivity addNeedActivity);
+
+    void inject(ConstructionTActivity constructionTActivity);
 }

@@ -43,6 +43,16 @@ public class UsrMgr {
     }
 
     /**
+     * 获取用户Id
+     *
+     * @return
+     */
+    public static String getUseType() {
+        LoginBean model = getUseInfo();
+        return model != null ? model.getUserType() : "";
+    }
+
+    /**
      * 获取用户电话
      *
      * @return

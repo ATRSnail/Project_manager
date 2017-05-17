@@ -22,7 +22,8 @@ public class GlideLoader implements ImageLoader {
         Glide.with(context)
                 .load(path)
                 .placeholder(R.drawable.global_img_default)
-                .centerCrop()
+                .fitCenter()
+                .override(1000, 1000)
                 .into(imageView);
     }
 }

@@ -64,7 +64,7 @@ public class NeedToDoActivity extends BaseRefreshActivity implements BaseQuickAd
     }
 
     private void initPresenter() {
-        mNewsPresenter.setNewsTypeAndId(pageNum, "0","1", UsrMgr.getUseId());
+        mNewsPresenter.setNewsTypeAndId(pageNum, UsrMgr.getUseType(),"1", UsrMgr.getUseId());
         mNewsPresenter.attachView(this);
         mPresenter = mNewsPresenter;
         mPresenter.onCreate();

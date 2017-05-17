@@ -12,7 +12,7 @@ public class ApiConstants {
     public static final String NETEAST_IMG_HOST = "http://files.heweather.com/cond_icon/%s.png";
 
     //线上
-//    public static final String NETEAST_HOST = "http://59.108.94.40:9100/";
+//    public static final String NETEAST_HOST = "http://59.108.94.40:9200/";
 
     public static String IMG_HOST = NETEAST_HOST+"file/";
     public static String getHost() {
@@ -54,5 +54,16 @@ public class ApiConstants {
     //查询待办节点详情
     public static final String TASK_LINK_DETAILS_URL = "/gcjg-api/project/getTaskDetails";
 
+    //查询未完成任务接口
+    public static final String TASK_UN_DONE_URL = "/gcjg-api/project/undoneTask";
 
+    //审核任务接口
+    public static final String AUDIT_STATUS_URL = "/gcjg-api/project/auditStatus";
+
+
+    //审核任务接口
+    public static final String DEL_IMG_URL = "/gcjg-api/project/delResource";
+
+    //提交审核接口
+    public static final String UPLOAD_FILE_URL = "/gcjg-api/upload/fileUpload";
 }

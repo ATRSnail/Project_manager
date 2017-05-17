@@ -13,19 +13,25 @@ import com.project.project_manager.common.LoadNewsType;
 import com.project.project_manager.common.UsrMgr;
 import com.project.project_manager.mvp.entity.ProjectBean;
 import com.project.project_manager.mvp.entity.TaskBean;
+import com.project.project_manager.mvp.event.ProjectRefEvent;
 import com.project.project_manager.mvp.presenter.impl.ProjectTaskNodesPresenterImpl;
 import com.project.project_manager.mvp.ui.activity.base.BaseRefreshActivity;
 import com.project.project_manager.mvp.ui.adapter.ProjectListAdapter;
 import com.project.project_manager.mvp.ui.view.base.BaseListView;
 import com.project.project_manager.utils.MyUtils;
 import com.project.project_manager.utils.NetUtil;
+import com.project.project_manager.utils.UT;
 import com.project.project_manager.weight.RecyclerViewDivider;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import static com.project.project_manager.common.ProStatusType.TYPE_NO_COMPLETE;
 import static com.project.project_manager.mvp.entity.ProjectBean.PROJECT_KEY;
 
 public class ProjectItemsActivity extends BaseRefreshActivity implements BaseQuickAdapter.OnRecyclerViewItemClickListener
@@ -36,6 +42,7 @@ public class ProjectItemsActivity extends BaseRefreshActivity implements BaseQui
     private ProjectListAdapter mProjectListAdapter;
 
     private ProjectBean projectBean;
+    private TaskBean taskBean;
     @Inject
     Activity mActivity;
     @Inject
@@ -59,11 +66,14 @@ public class ProjectItemsActivity extends BaseRefreshActivity implements BaseQui
     @Override
     public void initViews() {
         super.initViews();
-        setCustomTitle("项目A");
-        setRightBtnClick(new addNeedBtnClick());
+        EventBus.getDefault().register(this);
+        if (UsrMgr.getUseType().equals("0"))
+            setRightBtnClick(new addNeedBtnClick());
         initIntentDate();
+        setCustomTitle(projectBean.getProjectName());
         initRecyclerView();
         initPresenter();
+
     }
 
     private void initIntentDate() {
@@ -95,7 +105,23 @@ public class ProjectItemsActivity extends BaseRefreshActivity implements BaseQui
 
     @Override
     public void onItemClick(View view, int i) {
-        mProjectListAdapter.getItem(i).intentToNext(mActivity);
+        taskBean = mProjectListAdapter.getItem(i);
+        if (UsrMgr.getUseType().equals("1") && taskBean.getStatus().equals(TYPE_NO_COMPLETE)) {
+            UT.show("请先锁定");
+            return;
+        }
+
+        if (UsrMgr.getUseType().equals("0")) {
+            taskBean.intentToNext(mActivity);
+        } else {
+            taskBean.intentToNextT(mActivity);
+        }
+
+    }
+
+    @Subscribe
+    public void onEventMainThread(ProjectRefEvent event) {
+        mNewsPresenter.refreshData();
     }
 
     @Override
@@ -159,5 +185,11 @@ public class ProjectItemsActivity extends BaseRefreshActivity implements BaseQui
         public void onClick(View view) {
             projectBean.intentToAdd(mActivity);
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

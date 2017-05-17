@@ -59,6 +59,7 @@ public class MultiImgShowActivity extends Activity implements ZoomImageView.OnIs
                 String path = imgList.get(position);
                 if (path.contains("http")) {
                     try {
+                        imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
                         imageLoader.displayImage(MultiImgShowActivity.this, path, imageView);
                     } catch (Exception e) {
                         Log.e("ex--->", e.toString());

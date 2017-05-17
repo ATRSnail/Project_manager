@@ -234,7 +234,7 @@ public class AddNeedActivity extends BaseActivity implements View.OnClickListene
         String codes = listToString(linkIsChecks, true);
         String names = listToString(linkIsChecks, false);
         String companyType = listToString(companyIsChecks, true);
-        RetrofitManager.getInstance(1).addTaskDis(codes, names, videoType, projectBean.getId()+"", companyType)
+        RetrofitManager.getInstance(1).addTaskDis(codes, names, videoType, projectBean.getId()+"", companyType,"无")
                 .compose(TransformUtils.<BaseRspObj>defaultSchedulers())
                 .subscribe(new Subscriber<BaseRspObj>() {
 

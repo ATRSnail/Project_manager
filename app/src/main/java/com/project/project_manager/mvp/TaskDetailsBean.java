@@ -35,6 +35,8 @@ public class TaskDetailsBean {
      */
 
     private String uid;
+    private String position;
+    private String reallyPosition;
     private SysUserBean sysUser;
     private int taskUserId;
     private String taskType;
@@ -50,6 +52,22 @@ public class TaskDetailsBean {
     private HandlerBean handler;
     private String nodeCode;
     private List<ResourceBean> list;
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public String getReallyPosition() {
+        return reallyPosition;
+    }
+
+    public void setReallyPosition(String reallyPosition) {
+        this.reallyPosition = reallyPosition;
+    }
 
     public String getUid() {
         return uid;
@@ -182,4 +200,28 @@ public class TaskDetailsBean {
     public static class HandlerBean {
     }
 
+
+    @Override
+    public String toString() {
+        return "TaskDetailsBean{" +
+                "uid='" + uid + '\'' +
+                ", position='" + position + '\'' +
+                ", reallyPosition='" + reallyPosition + '\'' +
+                ", sysUser=" + sysUser +
+                ", taskUserId=" + taskUserId +
+                ", taskType='" + taskType + '\'' +
+                ", nodeName='" + nodeName + '\'' +
+                ", pid=" + pid +
+                ", companyName='" + companyName + '\'' +
+                ", taskCode='" + taskCode + '\'' +
+                ", companyType='" + companyType + '\'' +
+                ", opinion='" + opinion + '\'' +
+                ", projectTaskId=" + projectTaskId +
+                ", projectName='" + projectName + '\'' +
+                ", taskDictionary=" + taskDictionary +
+                ", handler=" + handler +
+                ", nodeCode='" + nodeCode + '\'' +
+                ", list=" + list +
+                '}';
+    }
 }

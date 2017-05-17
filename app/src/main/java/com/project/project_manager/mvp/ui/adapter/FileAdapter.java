@@ -12,7 +12,7 @@ import java.util.List;
  * @version 1.0
  * @create_date 17/1/17
  */
-
+@Deprecated
 public class FileAdapter extends BaseQuickAdapter<FileBean>{
     public FileAdapter(int layoutResId, List<FileBean> data) {
         super(layoutResId, data);

@@ -95,8 +95,8 @@ public class LoginActivity extends BaseActivity {
                         KLog.e(e.toString());
                         pDialog.dismiss();
                         UT.show(e.getMessage());
-                        startActivity(new Intent(LoginActivity.this, MainTabActivity.class));
-                        LoginActivity.this.finish();
+                    //    startActivity(new Intent(LoginActivity.this, MainTabActivity.class));
+                    //    LoginActivity.this.finish();
                     }
 
                     @Override

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.project.project_manager.mvp.ui.activity.ConstructionTActivity;
 import com.project.project_manager.mvp.ui.activity.VerifyDetailActivity;
 
 import java.io.Serializable;
@@ -30,6 +31,7 @@ public class TaskBean implements Serializable{
     private String status;
     private String nodeName;
     private String companyType;
+    private int taskUserId;
     private int pid;
     private long projectTaskId;
     private TaskDictionaryBean taskDictionary;
@@ -37,6 +39,14 @@ public class TaskBean implements Serializable{
 
     public void intentToNext(Context context){
         Intent intent = new Intent(context,VerifyDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(TASK_KEY,this);
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
+
+    public void intentToNextT(Context context){
+        Intent intent = new Intent(context,ConstructionTActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable(TASK_KEY,this);
         intent.putExtras(bundle);
@@ -107,6 +117,14 @@ public class TaskBean implements Serializable{
         this.nodeCode = nodeCode;
     }
 
+    public int getTaskUserId() {
+        return taskUserId;
+    }
+
+    public void setTaskUserId(int taskUserId) {
+        this.taskUserId = taskUserId;
+    }
+
     @Override
     public String toString() {
         return "TaskBean{" +
@@ -114,6 +132,7 @@ public class TaskBean implements Serializable{
                 ", status='" + status + '\'' +
                 ", nodeName='" + nodeName + '\'' +
                 ", companyType='" + companyType + '\'' +
+                ", taskUserId=" + taskUserId +
                 ", pid=" + pid +
                 ", projectTaskId=" + projectTaskId +
                 ", taskDictionary=" + taskDictionary +

@@ -1,5 +1,6 @@
 package com.project.project_manager.mvp.ui.activity.base;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +19,7 @@ import com.socks.library.KLog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * @author xch
@@ -100,6 +102,41 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         if (mPresenter != null){
             mPresenter.onDestory();
         }
+    }
+
+    public SweetAlertDialog initDialog(String content){
+        SweetAlertDialog pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        pDialog.setTitleText(content);
+        pDialog.setCancelable(false);
+        return pDialog;
+    }
+
+    public String setCate(String companyType) {
+        if (companyType.equals("0")) {
+            return "监管方";
+        }
+        if (companyType.equals("1")) {
+            return "设计方";
+        }
+        if (companyType.equals("2")) {
+            return "施工方";
+        }
+        return "";
+    }
+
+    //任务完成方式(字典)-0拍照,1拍照＋录像,2录像
+    public String setDemand(String taskType) {
+        if (taskType.equals("0")) {
+            return "拍照";
+        }
+        if (taskType.equals("1")) {
+            return "拍照＋录像";
+        }
+        if (taskType.equals("2")) {
+            return "录像";
+        }
+        return "";
     }
 
 }

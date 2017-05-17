@@ -2,11 +2,14 @@ package com.project.project_manager.mvp.ui.fragment;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.TextView;
 
 import com.project.project_manager.R;
+import com.project.project_manager.common.UsrMgr;
 import com.project.project_manager.mvp.ui.activity.RetPasswordActivity;
 import com.project.project_manager.mvp.ui.fragment.base.BaseFragment;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -19,6 +22,9 @@ import butterknife.OnClick;
 
 public class MineFragment extends BaseFragment{
 
+    @BindView(R.id.tv_user_name)
+    TextView tv_user_name;
+
     @Override
     public void initInjector() {
 
@@ -26,7 +32,7 @@ public class MineFragment extends BaseFragment{
 
     @Override
     public void initViews(View view) {
-
+        tv_user_name.setText(UsrMgr.getUsePhone());
     }
 
     @OnClick(R.id.tv_password_manage)
